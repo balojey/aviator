@@ -3,7 +3,7 @@ import queue
 
 from dotenv import load_dotenv
 
-from bot.casino import Spribe
+from bot.casino import Spribe, Sporty
 from bot.data_source import DataSource
 
 
@@ -48,7 +48,10 @@ if __name__ == '__main__':
     #         print(f"Result from cash_out_box_one: {result_one}")
     #         print(f"Result from cash_out_box_two: {result_two}")
 
-    data_source = DataSource(csv_file="sporty_aviator_data.csv")
-    data_source.repurpose_live_bet_history('live_bet_history/live_bet_history_20250414_005208.json')
-    print(data_source.data)
-    print(f"Total number of game rounds: {len(data_source.data)}")
+    # data_source = DataSource(csv_file="sporty_aviator_data.csv")
+    # data_source.repurpose_live_bet_history('live_bet_history/live_bet_history_20250414_005208.json')
+    # print(data_source.data)
+    # print(f"Total number of game rounds: {len(data_source.data)}")
+
+    print(Spribe().__repr_name__())
+    print(Sporty().__repr_name__())

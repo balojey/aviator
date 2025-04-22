@@ -93,6 +93,8 @@ class Backtester(BaseModel):
                         multiplier_for_box_two=1.00
                     )
                 bet_amount = self.strategy.calculate_bet_amount(balance=self.initial_balance if self.consistent else self.current_balance)
+                if bet_amount < 10.00:
+                    bet_amount = 10.00
                 if decided_multiplier.multiplier_for_box_one > 1.0:
                     self.current_balance -= bet_amount
                     if decided_multiplier.multiplier_for_box_one <= hd['multiplier']:

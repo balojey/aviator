@@ -71,33 +71,6 @@ class Casino(BaseModel):
         except Exception as e:
             print(f"Error checking readiness: {e}")
             return False
-
-    def cash_out(self, cash_out_amount: float) -> RoundResult:
-        """
-        Cash out
-        """
-        try:
-            try:
-                WebDriverWait(self.driver, 20).until(
-                    EC.visibility_of_element_located((By.CLASS_NAME, 'btn-warning'))
-                )
-            except Exception as e:
-                print(f"Timeout waiting for cashout button: {e}")
-                return RoundResult.LOSS
-            while self.latest_game_round_multiplier == self.get_latest_multiplier():
-                try:
-                    cashout_label = self.driver.find_element(By.CLASS_NAME, 'btn-warning').find_elements(By.TAG_NAME, 'label')[1]
-                    cashout_value = float(cashout_label.find_elements(By.TAG_NAME, 'span')[0].text.strip().replace(',', ''))
-                    if cashout_value >= cash_out_amount:
-                        self.driver.find_element(By.CLASS_NAME, 'btn-warning').click()
-                        return RoundResult.WIN
-                except Exception as e:
-                    print(f"Error during cash out attempt: {e}")
-                    return RoundResult.LOSS
-            return RoundResult.LOSS
-        except Exception as e:
-            print(f"Error during cash out: {e}")
-            return RoundResult.LOSS
         
     def cash_out_box_one(self, cash_out_amount: float) -> RoundResult:
         """
@@ -153,19 +126,6 @@ class Casino(BaseModel):
             print(f"Error during cash out: {e}")
             return RoundResult.LOSS
 
-    def place_bet(self, amount: float) -> None:
-        """
-        Place a bet in the Aviator game.
-        """
-        try:
-            actions = ActionChains(self.driver)
-            element = self.driver.find_elements(By.CLASS_NAME, 'bet-control')[0].find_element(By.TAG_NAME, 'input')
-            actions.click(element).key_down(Keys.CONTROL).send_keys("a").key_up(Keys.CONTROL).send_keys(Keys.DELETE).perform()
-            element.send_keys(str(amount))
-            self.driver.find_elements(By.CLASS_NAME, 'bet-control')[0].find_element(By.CLASS_NAME, 'buttons-block').find_element(By.TAG_NAME, 'button').click()
-        except Exception as e:
-            print(f"Error placing bet: {e}")
-
     def place_bet_in_box_one(self, amount: float) -> None:
         """
         Place a bet in the first box
@@ -197,12 +157,34 @@ class Casino(BaseModel):
         Get the latest round multiplier
         """
         try:
-            # multiplier_text = self.driver.find_elements(By.CLASS_NAME, 'payout')[0].find_element(By.CLASS_NAME, 'bubble-multiplier').text.strip()[:-1].replace(',', '')
             multiplier_text = self.driver.find_elements(By.CLASS_NAME, 'payout')[0].text.strip()[:-1].replace(',', '')
             return float(multiplier_text)
         except Exception as e:
             print(f"Error getting latest multiplier: {e}")
             return 0.0
+        
+    def is_alert_visible(self) -> bool:
+        """
+        Check if an element with the class 'alert' is visible.
+        """
+        try:
+            alert_element = self.driver.find_element(By.CLASS_NAME, 'alert')
+            return alert_element.is_displayed()
+        except Exception as e:
+            print(f"Error checking alert visibility: {e}")
+            return False
+        
+    def handle_alert(self) -> None:
+        """
+        Handle alerts visibility
+        """
+        try:
+            if self.is_alert_visible():
+                sleep(15)
+                if self.is_alert_visible():
+                    self.refresh()
+        except Exception as e:
+            print(f"Error handling alert visibility: {e}")
         
     def refresh(self) -> None:
         """

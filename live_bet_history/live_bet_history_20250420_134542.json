@@ -1,0 +1,70 @@
+[
+    {
+        "date": "2025-04-20",
+        "time": "13:47:39",
+        "bet_amount": 10.0,
+        "multiplier": 6.29,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 2.6,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 2246.49,
+        "current_balance": 2246.49,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-04-20",
+        "time": "13:48:15",
+        "bet_amount": 10.0,
+        "multiplier": 1.63,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 2.6,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 2246.49,
+        "current_balance": 2246.49,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-04-20",
+        "time": "13:48:32",
+        "bet_amount": 10.0,
+        "multiplier": 1.93,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 2.6,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 2246.49,
+        "current_balance": 2254.59,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-04-20",
+        "time": "13:48:49",
+        "bet_amount": 10.0,
+        "multiplier": 2.33,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 2.6,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 2246.49,
+        "current_balance": 2244.59,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    }
+]
