@@ -189,10 +189,10 @@ class Executor(BaseModel):
                         bet_amount_for_box_one = self.strategy.calculate_bet_amount_for_box_one(balance=initial_balance if self.consistent else current_balance)
                         bet_amount_for_box_two = self.strategy.calculate_bet_amount_for_box_two(balance=initial_balance if self.consistent else current_balance)
 
-                        if self.casino.__repr_name__() == 'Spribe' and bet_amount_for_box_one < 10.0:
-                            bet_amount_for_box_one = 10.0
-                        if self.casino.__repr_name__() == 'Spribe' and bet_amount_for_box_two < 10.0:
-                            bet_amount_for_box_two = 10.0
+                        if self.casino.__repr_name__() == 'Spribe' and bet_amount_for_box_one < 1.0:
+                            bet_amount_for_box_one = 1.0
+                        if self.casino.__repr_name__() == 'Spribe' and bet_amount_for_box_two < 1.0:
+                            bet_amount_for_box_two = 1.0
                         if (self.casino.__repr_name__() == 'Sporty' or self.casino.__repr_name__() == 'MSport') and bet_amount_for_box_one < 10.0:
                             bet_amount_for_box_one = 10.0
                         if (self.casino.__repr_name__() == 'Sporty' or self.casino.__repr_name__() == 'MSport') and bet_amount_for_box_two < 10.0:
