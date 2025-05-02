@@ -1,10 +1,17 @@
 
 echo '===========================Updating os and installing dependencies================================'
 sudo apt update
-sudo apt install -y python3-pip \
-    libxi6 libgconf-2-4 libnss3 libxss1 libappindicator1 \
-    fonts-liberation libatk-bridge2.0-0 libgtk-3-0
-sudo apt install xvfb unzip
+sudo apt install -y python3-pip
+sudo apt install -y libxi6
+sudo apt install -y libgconf-2-4
+sudo apt install -y libnss3
+sudo apt install -y libxss1
+sudo apt install -y libappindicator1
+sudo apt install -y fonts-liberation
+sudo apt install -y libatk-bridge2.0-0
+sudo apt install -y libgtk-3-0
+sudo apt install -y xvfb 
+sudo apt install -y unzip
 sudo curl -LsSf https://astral.sh/uv/install.sh | sh
 echo '=========================Update completed================================'
 
