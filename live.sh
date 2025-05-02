@@ -26,5 +26,6 @@ uv sync
 echo '=========================Project dependencies installation completed================================'
 
 echo '===========================Running script================================'
+mkdir -p logs/live/
 xvfb-run -a uv run loss_lurker.py test
 echo '=========================Script execution completed================================'
