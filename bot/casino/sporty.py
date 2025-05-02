@@ -52,7 +52,9 @@ class Sporty(Casino):
         self.driver.switch_to.frame(iframe)
         iframe = self.driver.find_element(By.CLASS_NAME, "turbo-games-iframe")
         self.driver.switch_to.frame(iframe)
-        sleep(30)
+        WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
+        )
 
 
 if __name__ == '__main__':

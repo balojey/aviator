@@ -4,6 +4,8 @@ from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from bot.casino.casino import Casino
 
@@ -18,9 +20,10 @@ class Spribe(Casino):
         self.url = 'https://spribe.co/games/aviator'
 
     def login(self) -> None:
+        chrome_options = webdriver.ChromeOptions()
         self.driver = webdriver.Chrome(
             service=webdriver.ChromeService(executable_path=os.getenv("CHROME_DRIVER_PATH")),
-            options=webdriver.ChromeOptions()
+            options=chrome_options,
         )
         self.driver.set_window_size(1920, 1080)
         self.driver.get(self.url)
@@ -35,7 +38,9 @@ class Spribe(Casino):
         self.driver.find_element(By.LINK_TEXT, 'Play Demo').click()
         self.driver.find_element(By.CLASS_NAME, 'modal-dialog').find_elements(By.TAG_NAME, 'button')[0].click()
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        sleep(30)
+        WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
+        )
 
 
 if __name__ == '__main__':

@@ -24,6 +24,7 @@ class Casino(BaseModel):
     password: str = None
     latest_game_round_multiplier: float = None
     log: logging.Logger = None
+    previous_multiplier_history: list[float] = []
 
     def login(self) -> None:
         """
@@ -55,45 +56,40 @@ class Casino(BaseModel):
         except Exception as e:
             print(f"Error getting balance: {e}")
             return 0.0
-
-    def is_ready(self) -> bool:
-        """
-        Check if the Aviator game is ready to accept bets.
-        """
-        try:
-            latest_multiplier = self.get_latest_multiplier()
-            if not self.latest_game_round_multiplier:
-                self.latest_game_round_multiplier = latest_multiplier
-            ready = latest_multiplier != self.latest_game_round_multiplier
-            if ready:
-                self.latest_game_round_multiplier = latest_multiplier
-            return ready
-        except Exception as e:
-            print(f"Error checking readiness: {e}")
-            return False
         
     def cash_out_box_one(self, cash_out_amount: float) -> RoundResult:
         """
         Cash out from box one
         """
         try:
-            try:
-                WebDriverWait(self.driver, 20).until(
-                    EC.visibility_of_element_located((By.CLASS_NAME, 'btn-warning'))
-                )
-            except Exception as e:
-                print(f"Timeout waiting for cashout button: {e}")
-                return RoundResult.LOSS
-            while self.latest_game_round_multiplier == self.get_latest_multiplier():
+            while self.previous_multiplier_history == self.get_latest_multipliers():
                 try:
-                    cashout_label = self.driver.find_elements(By.CLASS_NAME, 'bet-control')[0].find_element(By.CLASS_NAME, 'btn-warning').find_elements(By.TAG_NAME, 'label')[1]
-                    cashout_value = float(cashout_label.find_elements(By.TAG_NAME, 'span')[0].text.strip().replace(',', ''))
-                    if cashout_value >= cash_out_amount:
-                        self.driver.find_elements(By.CLASS_NAME, 'bet-control')[0].find_element(By.CLASS_NAME, 'btn-warning').click()
-                        return RoundResult.WIN
+                    cancel_bet_button = self.driver.find_elements(By.CLASS_NAME, 'bet-control')[0].find_element(By.CLASS_NAME, 'btn-danger')
                 except Exception as e:
-                    print(f"Error during cash out attempt: {e}")
+                    cancel_bet_button = None
+                try:
+                    cashout_button = self.driver.find_elements(By.CLASS_NAME, 'bet-control')[0].find_element(By.CLASS_NAME, 'btn-warning')
+                except Exception as e:
+                    cashout_button = None
+                try:
+                    place_bet_button = self.driver.find_elements(By.CLASS_NAME, 'bet-control')[0].find_element(By.CLASS_NAME, 'btn-success')
+                except Exception as e:
+                    place_bet_button = None
+
+                if place_bet_button:
                     return RoundResult.LOSS
+                elif cancel_bet_button:
+                    continue
+                elif cashout_button:
+                    try:
+                        cashout_label = cashout_button.find_elements(By.TAG_NAME, 'label')[1]
+                        cashout_value = float(cashout_label.find_elements(By.TAG_NAME, 'span')[0].text.strip().replace(',', ''))
+                        if cashout_value >= cash_out_amount:
+                            cashout_button.click()
+                            return RoundResult.WIN
+                    except Exception as e:
+                        print(f"Error during cash out attempt: {e}")
+                        return RoundResult.LOSS
             return RoundResult.LOSS
         except Exception as e:
             print(f"Error during cash out: {e}")
@@ -104,23 +100,34 @@ class Casino(BaseModel):
         Cash out from box two
         """
         try:
-            try:
-                WebDriverWait(self.driver, 20).until(
-                    EC.visibility_of_element_located((By.CLASS_NAME, 'btn-warning'))
-                )
-            except Exception as e:
-                print(f"Timeout waiting for cashout button: {e}")
-                return RoundResult.LOSS
-            while self.latest_game_round_multiplier == self.get_latest_multiplier():
+            while self.previous_multiplier_history == self.get_latest_multipliers():
                 try:
-                    cashout_label = self.driver.find_elements(By.CLASS_NAME, 'bet-control')[1].find_element(By.CLASS_NAME, 'btn-warning').find_elements(By.TAG_NAME, 'label')[1]
-                    cashout_value = float(cashout_label.find_elements(By.TAG_NAME, 'span')[0].text.strip().replace(',', ''))
-                    if cashout_value >= cash_out_amount:
-                        self.driver.find_elements(By.CLASS_NAME, 'bet-control')[1].find_element(By.CLASS_NAME, 'btn-warning').click()
-                        return RoundResult.WIN
+                    cancel_bet_button = self.driver.find_elements(By.CLASS_NAME, 'bet-control')[1].find_element(By.CLASS_NAME, 'btn-danger')
                 except Exception as e:
-                    print(f"Error during cash out attempt: {e}")
+                    cancel_bet_button = None
+                try:
+                    cashout_button = self.driver.find_elements(By.CLASS_NAME, 'bet-control')[1].find_element(By.CLASS_NAME, 'btn-warning')
+                except Exception as e:
+                    cashout_button = None
+                try:
+                    place_bet_button = self.driver.find_elements(By.CLASS_NAME, 'bet-control')[1].find_element(By.CLASS_NAME, 'btn-success')
+                except Exception as e:
+                    place_bet_button = None
+
+                if place_bet_button:
                     return RoundResult.LOSS
+                elif cancel_bet_button:
+                    continue
+                elif cashout_button:
+                    try:
+                        cashout_label = cashout_button.find_elements(By.TAG_NAME, 'label')[1]
+                        cashout_value = float(cashout_label.find_elements(By.TAG_NAME, 'span')[0].text.strip().replace(',', ''))
+                        if cashout_value >= cash_out_amount:
+                            cashout_button.click()
+                            return RoundResult.WIN
+                    except Exception as e:
+                        print(f"Error during cash out attempt: {e}")
+                        return RoundResult.LOSS
             return RoundResult.LOSS
         except Exception as e:
             print(f"Error during cash out: {e}")
@@ -152,23 +159,29 @@ class Casino(BaseModel):
         except Exception as e:
             print(f"Error placing bet: {e}")
 
-    def get_latest_multiplier(self) -> float:
+    def get_latest_multipliers(self) -> list[float]:
         """
-        Get the latest round multiplier
+        Get the latest round multipliers.
         """
+        self.handle_alert()
         try:
-            multiplier_text = self.driver.find_elements(By.CLASS_NAME, 'payout')[0].text.strip()[:-1].replace(',', '')
-            return float(multiplier_text)
+            multipliers = self.driver.find_elements(By.CLASS_NAME, 'payout')[:15]
+            multipliers = [float(multiplier.text.strip()[:-1].replace(',', '')) for multiplier in multipliers]
+            return multipliers
         except Exception as e:
             print(f"Error getting latest multiplier: {e}")
-            return 0.0
+            return []
         
     def is_alert_visible(self) -> bool:
         """
         Check if an element with the class 'alert' is visible.
         """
         try:
-            alert_element = self.driver.find_element(By.CLASS_NAME, 'alert')
+            try:
+                alert_element = self.driver.find_element(By.CLASS_NAME, 'alert')
+            except Exception as e:
+                # print(f"Alert element not found: {e}")
+                return False
             return alert_element.is_displayed()
         except Exception as e:
             print(f"Error checking alert visibility: {e}")
@@ -180,9 +193,8 @@ class Casino(BaseModel):
         """
         try:
             if self.is_alert_visible():
-                sleep(15)
-                if self.is_alert_visible():
-                    self.refresh()
+                self.log.info("Alert is visible, refreshing the page.")
+                self.refresh()
         except Exception as e:
             print(f"Error handling alert visibility: {e}")
         
@@ -192,6 +204,12 @@ class Casino(BaseModel):
         """
         try:
             self.driver.refresh()
-            sleep(30)
+            WebDriverWait(self.driver, 25).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
+            )
+            try:
+                latest_multiplier = self.driver.find_elements(By.CLASS_NAME, 'payout')[-1].text.strip()[:-1].replace(',', '')
+            except Exception as e:
+                self.refresh()
         except Exception as e:
             print(f"Error refreshing page: {e}")

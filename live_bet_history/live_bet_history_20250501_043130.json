@@ -1,0 +1,1172 @@
+[
+    {
+        "date": "2025-05-01",
+        "time": "04:32:30",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.51,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20004.08,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:32:43",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.8,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20013.78,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:33:04",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 20.35,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20013.78,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:33:49",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 5.94,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20013.78,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:34:21",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.92,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20013.78,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:34:39",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.11,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20003.78,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:34:50",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 22.27,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20024.18,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:35:35",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 66.72,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20024.18,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:36:35",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.23,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20024.18,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:36:56",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.51,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20024.18,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:37:10",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 11.68,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20035.08,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:37:49",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.85,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20035.08,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:38:14",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.61,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20035.08,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:38:27",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.01,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20025.08,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:38:37",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.03,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20015.08,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:38:54",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 17.92,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "miss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20018.08,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:39:40",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.03,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20018.08,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:39:57",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.3,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20018.08,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:40:10",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 8.13,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20028.08,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:40:43",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.05,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20028.08,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:40:54",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 3.07,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20038.48,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:41:16",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.43,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20038.48,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:41:31",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 11.31,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20048.48,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:42:09",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 12.34,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20048.48,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:42:49",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.36,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20048.48,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:43:03",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.08,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20038.48,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:43:15",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.48,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20028.48,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:43:27",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 5.48,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20058.78,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:43:57",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 4.0,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20058.78,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:44:23",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 11.7,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20058.78,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:45:02",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 3.1,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20058.78,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:45:26",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.29,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20058.78,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:45:45",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.09,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20058.78,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:45:56",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.69,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20068.98,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:46:17",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.02,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20068.98,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:46:28",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.13,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20078.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:46:46",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 8.85,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20078.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:47:20",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 3.33,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20078.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:47:45",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.33,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20078.88,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:47:58",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.38,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20068.88,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:48:12",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 3.64,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20088.78,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:48:37",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 4.94,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20088.78,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:49:06",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.01,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20088.78,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:49:16",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 8.18,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20098.98,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:49:50",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.06,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20098.98,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:50:01",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 3.62,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20108.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:50:25",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 8.72,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20108.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:51:00",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.45,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20108.88,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:51:15",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.0,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20098.88,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:51:25",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.44,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20088.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:51:45",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.27,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20078.88,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:51:57",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 3.49,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20068.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:52:21",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.03,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20058.88,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:52:31",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 5.27,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20048.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:53:00",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 6.7,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20038.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:53:32",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.67,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20028.88,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:53:54",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 21.54,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20120.18,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "Pk",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:54:40",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 9.88,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20120.18,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:55:17",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 4.52,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20120.18,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:55:45",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.29,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20120.18,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:55:58",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.1,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20110.18,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:56:09",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.12,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20100.18,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:56:20",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 1.1,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "loss",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20090.18,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:56:30",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 14.87,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "win",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20130.58,
+        "multiplier_category": "Pk",
+        "decided_multiplier_one_category": "P",
+        "decided_multiplier_two_category": "B"
+    },
+    {
+        "date": "2025-05-01",
+        "time": "04:57:11",
+        "bet_amount_for_box_one": 10.0,
+        "bet_amount_for_box_two": 20.0,
+        "multiplier": 2.53,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 20004.08,
+        "current_balance": 20130.58,
+        "multiplier_category": "P",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    }
+]

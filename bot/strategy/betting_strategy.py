@@ -9,11 +9,12 @@ from bot.data_source import BetHistory, LiveBetHistory, DecidedMultiplier
 
 class BettingStrategy(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
-    percentage_to_bet_per_round: float
+    percentage_to_bet_per_round_for_box_one: float
+    percentage_to_bet_per_round_for_box_two: float
     is_backtest: bool = None
     log: logging.Logger = None
 
-    @field_validator('percentage_to_bet_per_round')
+    @field_validator('percentage_to_bet_per_round_for_box_one', 'percentage_to_bet_per_round_for_box_two')
     def check_limits(cls, value):
         if not 0.0 <= value <= 1.0:
             raise ValueError('stop_loss and take_profit must be between 0.0 and 1.0 inclusive')
@@ -27,8 +28,11 @@ class BettingStrategy(BaseModel):
         """Override this method in specific strategy classes"""
         raise NotImplementedError
     
-    def calculate_bet_amount(self, balance: float) -> float:
-        return round(balance * self.percentage_to_bet_per_round, 2)
+    def calculate_bet_amount_for_box_one(self, balance: float) -> float:
+        return round(balance * self.percentage_to_bet_per_round_for_box_one, 2)
+    
+    def calculate_bet_amount_for_box_two(self, balance: float) -> float:
+        return round(balance * self.percentage_to_bet_per_round_for_box_two, 2)
     
     def send_quit_signal(self):
         """Send a signal to quit the game"""

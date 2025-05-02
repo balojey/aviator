@@ -7,7 +7,8 @@ from bot.data_source.decided_multiplier import DecidedMultiplier
 class CommonBetHistory(BaseModel):
     date: str
     time: str
-    bet_amount: float
+    bet_amount_for_box_one: float
+    bet_amount_for_box_two: float
     multiplier: float
     decided_multiplier: DecidedMultiplier
     result_one: RoundResult

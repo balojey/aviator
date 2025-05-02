@@ -24,9 +24,10 @@ class MSport(Casino):
         self.password = os.getenv("PASSWORD")
 
     def login(self) -> None:
+        chrome_options = webdriver.ChromeOptions()
         self.driver = webdriver.Chrome(
             service=webdriver.ChromeService(executable_path=os.getenv("CHROME_DRIVER_PATH")),
-            options=webdriver.ChromeOptions()
+            options=chrome_options,
         )
         self.driver.set_window_size(1920, 1080)
         self.driver.get(self.url)
@@ -52,7 +53,9 @@ class MSport(Casino):
         sleep(5)
         self.driver.find_element(By.CLASS_NAME, 'game-hot-area').find_elements(By.CLASS_NAME, 'm-game-item-mask')[-1].find_element(By.CLASS_NAME, 'play-btn-now').click()
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        sleep(30)
+        WebDriverWait(self.driver, 30).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
+        )
 
 
 if __name__ == '__main__':
