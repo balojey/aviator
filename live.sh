@@ -15,7 +15,7 @@ echo '=========================Chrome installation completed====================
 
 echo '===========================Installing ChromeDriver================================'
 CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 1)
-sudo wget https://chromedriver.storage.googleapis.com/${CHROME_VERSION}.0.7103.49/chromedriver_linux64.zip
+sudo wget https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VERSION}.0.7103.49/linux64/chromedriver-linux64.zip
 sudo unzip chromedriver_linux64.zip
 sudo mv chromedriver /usr/local/bin/
 chmod +x /usr/local/bin/chromedriver
