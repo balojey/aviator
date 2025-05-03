@@ -226,34 +226,6 @@ class Executor(BaseModel):
                             result_one = box_one_result_queue.get()
                         if decided_multiplier.multiplier_for_box_two > 1.0:
                             result_two = box_two_result_queue.get()
-
-                        # while True:
-                        #     if self.casino.previous_multiplier_history != self.casino.get_latest_multipliers():
-                        #         current_balance = self.casino.get_balance()
-                        #         self.live_bet_history.append(lvb := LiveBetHistory(
-                        #             date=date,
-                        #             time=time,
-                        #             bet_amount_for_box_one=bet_amount_for_box_one,
-                        #             bet_amount_for_box_two=bet_amount_for_box_two,
-                        #             multiplier=(m := self.casino.get_latest_multipliers()[0]),
-                        #             decided_multiplier=decided_multiplier,
-                        #             result_one=result_one,
-                        #             result_two=result_two,
-                        #             initial_balance=initial_balance,
-                        #             current_balance=current_balance,
-                        #             multiplier_category='B' if 1.00 <= m <= 1.99 else 'P' if 2.00 <= m <= 9.99 else 'Pk',
-                        #             decided_multiplier_one_category='B' if 1.00 <= decided_multiplier.multiplier_for_box_one <= 1.99 else 'P' if 2.00 <= decided_multiplier.multiplier_for_box_one <= 9.99 else 'Pk',
-                        #             decided_multiplier_two_category='B' if 1.00 <= decided_multiplier.multiplier_for_box_two <= 1.99 else 'P' if 2.00 <= decided_multiplier.multiplier_for_box_two <= 9.99 else 'Pk',
-                        #         ))
-                        #         logging.info(lvb)
-                        #         self.save_live_bet_history()
-
-                        #         winnings_1 = [history for history in self.live_bet_history if history.result_one == RoundResult.WIN]
-                        #         winnings_2 = [history for history in self.live_bet_history if history.result_two == RoundResult.WIN]
-                        #         total_winnings = len(winnings_1) + len(winnings_2)
-                        #         logging.info(f'Total Number of Winnings: {total_winnings}')
-
-                        #         break
                         restart_strategy = False
                     else:
                         iteration_wait_rounds_count -= 1

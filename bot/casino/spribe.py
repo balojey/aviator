@@ -21,12 +21,6 @@ class Spribe(Casino):
 
     def login(self) -> None:
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--disable-gpu")
-        prefs = {"profile.managed_default_content_settings.images": 2}
-        chrome_options.add_experimental_option("prefs", prefs)
-        chrome_options.add_argument("--headless=new")
         self.driver = webdriver.Chrome(
             service=webdriver.ChromeService(executable_path=os.getenv("CHROME_DRIVER_PATH")),
             options=chrome_options,
@@ -39,15 +33,14 @@ class Spribe(Casino):
         """
         Launch the Aviator game.
         """
-        # for _ in range(8):
-        #     self.driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.ARROW_DOWN)
+        for _ in range(8):
+            self.driver.find_element(By.TAG_NAME, 'body').send_keys(Keys.ARROW_DOWN)
         self.driver.find_element(By.LINK_TEXT, 'Play Demo').click()
         self.driver.find_element(By.CLASS_NAME, 'modal-dialog').find_elements(By.TAG_NAME, 'button')[0].click()
         self.driver.switch_to.window(self.driver.window_handles[-1])
         WebDriverWait(self.driver, 30).until(
             EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
         )
-        # self.driver.save_screenshot('screenshot.png')
 
 
 if __name__ == '__main__':
