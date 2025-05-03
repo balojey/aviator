@@ -50,7 +50,7 @@ class Casino(BaseModel):
         """
         Get the current balance from the casino website.
         """
-        self.driver.save_screenshot('screenshot.png')
+        # self.driver.save_screenshot('screenshot.png')
         try:
             balance_text = self.driver.find_element(By.CLASS_NAME, 'balance-amount').text.strip().replace(',', '')
             return float(balance_text)
