@@ -41,7 +41,7 @@ class Spribe(Casino):
         WebDriverWait(self.driver, 30).until(
             EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
         )
-        self.log.info('Payout visible!')
+        # self.log.info('Payout visible!')
         self.driver.save_screenshot("screenshot.png")
 
 
