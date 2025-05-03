@@ -42,6 +42,7 @@ class Spribe(Casino):
             EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
         )
         self.log.info('Payout visible!')
+        self.driver.save_screenshot("screenshot.png")
 
 
 if __name__ == '__main__':
