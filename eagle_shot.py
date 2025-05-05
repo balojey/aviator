@@ -11,71 +11,84 @@ from bot.strategy.executor import Executor
 from bot.strategy.risk_manager import RiskManager
 
 
-class LossLurker(BettingStrategy):
+class EagleShot(BettingStrategy):
+    minimum_multiplier: float
+    initial_target_multiplier: float
     base_decided_multiplier: DecidedMultiplier = DecidedMultiplier(
         multiplier_for_box_one=1.00,
         multiplier_for_box_two=1.00,
     )
 
-    def get_divider(self, total_multiplier: float) -> float:
-        if 30.00 <= total_multiplier < 50.00:
-            return 2.00
-        elif 50.00 <= total_multiplier < 150.00:
-            return 3.00
-        elif 150.00 <= total_multiplier < 300.00:
-            return 5.00
-        elif 300.00 <= total_multiplier < 450.00:
-            return 7.00
-        elif 450.00 <= total_multiplier < 600.00:
-            return 9.00
-        elif 600.00 <= total_multiplier < 750.00:
-            return 11.00
-        elif 750.00 <= total_multiplier < 900.00:
-            return 13.00
-        elif 900.00 <= total_multiplier < 1050.00:
-            return 15.00
+    def scanner(self, multipliers: list[float], initial_target: float = 2.00) -> list[float]:
+        """
+        Scans a list of multipliers to track unresolved Blue debts.
+        For each Blue, checks if a compounding 100% profit (x2, x3, ...) was achieved in the following rounds.
         
-    def decide_multiplier_for_box_one(self, bet_history: list[BetHistory | LiveBetHistory], restart_strategy: bool = False) -> float:
-        pass
+        Args:
+            multipliers (list of float): List of multipliers.
+            initial_target (int): Initial target multiplier to resolve Blue debts.
+            
+        Returns:
+            list of float: List of target multipliers needed to resolve unpaid Blue debts.
+        """
+        targets = []
+        i = 0
+        while i < len(multipliers):
+            current = multipliers[i]
+            
+            if 1.00 <= current < 2.00:
+                # Start a debt sequence
+                target = initial_target  # Initial target: 100% profit
+                resolved = False
+                for j in range(i + 1, len(multipliers)):
+                    if multipliers[j] >= target:
+                        resolved = True
+                        break
+                    else:
+                        target += 1  # Increase target by +100%
+                if not resolved:
+                    targets.append(target)
+            
+            i += 1
 
-    def decide_multiplier_for_box_two(self, bet_history: list[BetHistory | LiveBetHistory], restart_strategy: bool = False) -> float:
-        pass
+        return targets
+    
+    def sort(self, multipliers: list[float], minimum_multiplier: float = 10.00) -> list[float]:
+        filtered_multipliers = [m for m in multipliers if m >= minimum_multiplier]
+        return sorted(filtered_multipliers)
 
     def decide_multiplier(self, game_data: pl.DataFrame, bet_history: list[BetHistory | LiveBetHistory] = [], restart_strategy: bool = False) -> DecidedMultiplier:
         if restart_strategy:
             self.base_decided_multiplier.multiplier_for_box_one = 1.00
             self.base_decided_multiplier.multiplier_for_box_two = 1.00
             return self.base_decided_multiplier
-
-        if len(bet_history) > 0 and bet_history[-1].result_one == RoundResult.LOSS:
-            self.base_decided_multiplier.multiplier_for_box_one += 1
-
-            lost_rounds = [history for history in bet_history[-50:] if history.result_one == RoundResult.LOSS]
-            if bet_history[-1].multiplier < 2.00 and self.base_decided_multiplier.multiplier_for_box_two == 1.00 and len(lost_rounds) == 50:
-                self.base_decided_multiplier.multiplier_for_box_two += 1.00
-            if bet_history[-1].result_two == RoundResult.LOSS:
-                self.base_decided_multiplier.multiplier_for_box_two += 1.00
-            if bet_history[-1].result_two == RoundResult.WIN:
-                self.base_decided_multiplier.multiplier_for_box_two = 1.00
-
-            return self.base_decided_multiplier
         
-        if len(bet_history) > 0 and bet_history[-1].multiplier < 2.00:
-            self.base_decided_multiplier.multiplier_for_box_one = 1.00
-            self.base_decided_multiplier.multiplier_for_box_one += 1.00
-
-            return self.base_decided_multiplier
-        
-        if len(bet_history) > 0 and bet_history[-1].result_one == RoundResult.WIN:
-            self.base_decided_multiplier.multiplier_for_box_one = 1.00
-            self.base_decided_multiplier.multiplier_for_box_two = 1.00
-
-            return self.base_decided_multiplier
+        multipliers = [history.multiplier for history in bet_history]
+        target_multipliers = self.scanner(multipliers, self.initial_target_multiplier)
+        if len(target_multipliers) > 0:
+            sorted_multipliers = self.sort(target_multipliers, self.minimum_multiplier)
+            self.log.info(f'Sorted Multipliers: {sorted_multipliers}')
+            if len(sorted_multipliers) > 0:
+                decided_multiplier = DecidedMultiplier(
+                    multiplier_for_box_one=1.00,
+                    multiplier_for_box_two=1.00,
+                )
+                if len(sorted_multipliers) == 1:
+                    decided_multiplier.multiplier_for_box_one = sorted_multipliers[0]
+                elif len(sorted_multipliers) > 1:
+                    decided_multiplier.multiplier_for_box_one = sorted_multipliers[0]
+                    decided_multiplier.multiplier_for_box_two = sorted_multipliers[-1]
+                return decided_multiplier
 
         return self.base_decided_multiplier
     
 
-strategy = LossLurker(percentage_to_bet_per_round_for_box_one=0.0005, percentage_to_bet_per_round_for_box_two=0.00075)
+strategy = EagleShot(
+    percentage_to_bet_per_round_for_box_one=0.0005,
+    percentage_to_bet_per_round_for_box_two=0.0005,
+    minimum_multiplier=10.00,
+    initial_target_multiplier=2.00,
+)
 risk_manager = RiskManager(stop_loss=1.0, take_profit=0.05)
 data_source = DataSource(csv_file="sporty_aviator_data.csv")
 test_casino = Spribe()

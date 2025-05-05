@@ -21,6 +21,8 @@ class Spribe(Casino):
 
     def login(self) -> None:
         chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('disable-gpu')
+        chrome_options.add_argument('no-sandbox')
         self.driver = webdriver.Chrome(
             service=webdriver.ChromeService(executable_path=os.getenv("CHROME_DRIVER_PATH")),
             options=chrome_options,

@@ -1,0 +1,20 @@
+[
+    {
+        "date": "2025-05-04",
+        "time": "09:45:23",
+        "bet_amount_for_box_one": 1.5,
+        "bet_amount_for_box_two": 2.25,
+        "multiplier": 1.55,
+        "decided_multiplier": {
+            "multiplier_for_box_one": 1.0,
+            "multiplier_for_box_two": 1.0
+        },
+        "result_one": "draw",
+        "result_two": "draw",
+        "initial_balance": 3000.0,
+        "current_balance": 3000.0,
+        "multiplier_category": "B",
+        "decided_multiplier_one_category": "B",
+        "decided_multiplier_two_category": "B"
+    }
+]

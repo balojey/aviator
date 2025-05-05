@@ -16,8 +16,8 @@ sudo curl -LsSf https://astral.sh/uv/install.sh | sh
 echo '=========================Update completed================================'
 
 echo '===========================Installing Chrome================================'
-sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb
+sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+sudo yum install ./google-chrome-stable_current_x86_64.rpm
 echo '=========================Chrome installation completed================================'
 
 echo '===========================Installing ChromeDriver================================'
