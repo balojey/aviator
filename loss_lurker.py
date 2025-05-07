@@ -76,7 +76,7 @@ class LossLurker(BettingStrategy):
     
 
 strategy = LossLurker(percentage_to_bet_per_round_for_box_one=0.0005, percentage_to_bet_per_round_for_box_two=0.00075)
-risk_manager = RiskManager(stop_loss=1.0, take_profit=0.0005)
+risk_manager = RiskManager(stop_loss=1.0, take_profit=0.05)
 data_source = DataSource(csv_file="sporty_aviator_data.csv")
 test_casino = Spribe()
 live_casino = MSport()

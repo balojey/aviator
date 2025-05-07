@@ -23,6 +23,22 @@ class Spribe(Casino):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument('--disable-software-rasterizer')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-background-networking')
+        chrome_options.add_argument('--disable-background-timer-throttling')
+        chrome_options.add_argument('--disable-client-side-phishing-detection')
+        chrome_options.add_argument('--disable-default-apps')
+        chrome_options.add_argument('--disable-hang-monitor')
+        chrome_options.add_argument('--disable-popup-blocking')
+        chrome_options.add_argument('--disable-prompt-on-repost')
+        chrome_options.add_argument('--disable-sync')
+        chrome_options.add_argument('--metrics-recording-only')
+        chrome_options.add_argument('--no-first-run')
+        chrome_options.add_argument('--safebrowsing-disable-auto-update')
+        chrome_options.add_argument('--enable-automation')
+        chrome_options.add_argument('--password-store=basic')
+        chrome_options.add_argument('--use-mock-keychain')
         self.driver = webdriver.Chrome(
             service=webdriver.ChromeService(executable_path=os.getenv("CHROME_DRIVER_PATH")),
             options=chrome_options,
