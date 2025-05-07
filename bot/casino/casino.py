@@ -178,7 +178,7 @@ class Casino(BaseModel):
         """
         try:
             try:
-                alert_element = self.driver.find_element(By.CLASS_NAME, 'alert')
+                alert_element = self.driver.find_element(By.CLASS_NAME, 'alert-warning')
             except Exception as e:
                 # print(f"Alert element not found: {e}")
                 return False
