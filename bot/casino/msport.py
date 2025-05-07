@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium_stealth import stealth
 
 from bot.casino.casino import Casino
 from bot.data_source import RoundResult
@@ -43,9 +44,19 @@ class MSport(Casino):
         chrome_options.add_argument('--enable-automation')
         chrome_options.add_argument('--password-store=basic')
         chrome_options.add_argument('--use-mock-keychain')
+        chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+        chrome_options.add_argument(f"--proxy-server=http://{os.getenv('PROXY')}")
         self.driver = webdriver.Chrome(
             service=webdriver.ChromeService(executable_path=os.getenv("CHROME_DRIVER_PATH")),
             options=chrome_options,
+        )
+        stealth(self.driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
         )
         self.driver.set_window_size(1920, 1080)
         self.driver.get(self.url)

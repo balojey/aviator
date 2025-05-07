@@ -20,6 +20,7 @@ dependencies = [
     "python-dotenv>=1.0.1",
     "seaborn>=0.13.2",
     "selenium>=4.29.0",
+    "selenium-stealth>=1.0.6",
     "setuptools>=78.1.0",
     "talipp>=2.5.0",
 ]
