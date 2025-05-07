@@ -71,6 +71,12 @@ class Executor(BaseModel):
         result_two = RoundResult.DRAW
         while True:
             try:
+                if iteration_wait_rounds_count != 0:
+                    decided_multiplier = DecidedMultiplier(multiplier_for_box_one=1.0, multiplier_for_box_two=1.0)
+                    result_one = RoundResult.DRAW
+                    result_two = RoundResult.DRAW
+                    date = datetime.now().strftime('%Y-%m-%d')
+                    time = datetime.now().strftime('%H:%M:%S')
                 if len(self.casino.previous_multiplier_history) <= 0:
                     self.casino.previous_multiplier_history = self.casino.get_latest_multipliers()
                 if self.casino.previous_multiplier_history != self.casino.get_latest_multipliers():
@@ -87,18 +93,34 @@ class Executor(BaseModel):
                     if self.casino.previous_multiplier_history[:14] != self.casino.get_latest_multipliers()[1:]:
                         previous_multiplier = self.casino.previous_multiplier_history[0]
                         index_of_previous_multiplier_in_latest_multipliers = self.casino.get_latest_multipliers().index(previous_multiplier)
-                        if decided_multiplier.multiplier_for_box_one > 1.00 and result_one == RoundResult.LOSS:
-                            for multiplier in self.casino.get_latest_multipliers()[:index_of_previous_multiplier_in_latest_multipliers + 1]:
-                                if multiplier >= decided_multiplier.multiplier_for_box_one:
-                                    result_one = RoundResult.MISS
-                                    decided_multiplier.multiplier_for_box_one = 1.00
-                                    break
-                        if decided_multiplier.multiplier_for_box_two > 1.00 and result_two == RoundResult.LOSS:
-                            for multiplier in self.casino.get_latest_multipliers()[:index_of_previous_multiplier_in_latest_multipliers + 1]:
-                                if multiplier >= decided_multiplier.multiplier_for_box_two:
-                                    result_two = RoundResult.MISS
-                                    decided_multiplier.multiplier_for_box_two = 1.00
-                                    break
+                        latest_multiplier = self.casino.get_latest_multipliers()[0]
+                        current_balance = self.casino.get_balance()
+                        # if (decided_multiplier.multiplier_for_box_one > 1.00 and result_one == RoundResult.LOSS) or (decided_multiplier.multiplier_for_box_two > 1.00 and result_two == RoundResult.LOSS):
+                        logging.info(f'Multipliers: {self.casino.get_latest_multipliers()[:index_of_previous_multiplier_in_latest_multipliers]}')
+                        for multiplier in list(reversed(self.casino.get_latest_multipliers()[:index_of_previous_multiplier_in_latest_multipliers])):
+                            if multiplier >= decided_multiplier.multiplier_for_box_one:
+                                result_one = RoundResult.MISS
+                                decided_multiplier.multiplier_for_box_one = 1.00
+                            if multiplier >= decided_multiplier.multiplier_for_box_two:
+                                result_two = RoundResult.MISS
+                                decided_multiplier.multiplier_for_box_two = 1.00
+                            if multiplier != latest_multiplier:
+                                self.live_bet_history.append(lvb := LiveBetHistory(
+                                    date=date,
+                                    time=time,
+                                    bet_amount_for_box_one=bet_amount_for_box_one,
+                                    bet_amount_for_box_two=bet_amount_for_box_two,
+                                    multiplier=(m := multiplier),
+                                    decided_multiplier=decided_multiplier,
+                                    result_one=result_one,
+                                    result_two=result_two,
+                                    initial_balance=initial_balance,
+                                    current_balance=current_balance,
+                                    multiplier_category='B' if 1.00 <= m <= 1.99 else 'P' if 2.00 <= m <= 9.99 else 'Pk',
+                                    decided_multiplier_one_category='B' if 1.00 <= decided_multiplier.multiplier_for_box_one <= 1.99 else 'P' if 2.00 <= decided_multiplier.multiplier_for_box_one <= 9.99 else 'Pk',
+                                    decided_multiplier_two_category='B' if 1.00 <= decided_multiplier.multiplier_for_box_two <= 1.99 else 'P' if 2.00 <= decided_multiplier.multiplier_for_box_two <= 9.99 else 'Pk',
+                                ))
+                                logging.info(lvb)
 
                     self.casino.previous_multiplier_history = self.casino.get_latest_multipliers()
                     current_balance = self.casino.get_balance()
@@ -229,23 +251,6 @@ class Executor(BaseModel):
                         restart_strategy = False
                     else:
                         iteration_wait_rounds_count -= 1
-                        self.live_bet_history.append(lvb := LiveBetHistory(
-                            date=date,
-                            time=time,
-                            bet_amount_for_box_one=bet_amount_for_box_one,
-                            bet_amount_for_box_two=bet_amount_for_box_two,
-                            multiplier=(m := self.casino.get_latest_multipliers()[0]),
-                            decided_multiplier=DecidedMultiplier(multiplier_for_box_one=1.00, multiplier_for_box_two=1.0),
-                            result_one=RoundResult.DRAW,
-                            result_two=RoundResult.DRAW,
-                            initial_balance=initial_balance,
-                            current_balance=current_balance,
-                            multiplier_category='B' if 1.00 <= m <= 1.99 else 'P' if 2.00 <= m <= 9.99 else 'Pk',
-                            decided_multiplier_one_category='B' if 1.00 <= decided_multiplier.multiplier_for_box_one <= 1.99 else 'P' if 2.00 <= decided_multiplier.multiplier_for_box_one <= 9.99 else 'Pk',
-                            decided_multiplier_two_category='B' if 1.00 <= decided_multiplier.multiplier_for_box_two <= 1.99 else 'P' if 2.00 <= decided_multiplier.multiplier_for_box_two <= 9.99 else 'Pk',
-                        ))
-                        logging.info(lvb)
-                        self.save_live_bet_history()
                         logging.info(f'Waiting for {iteration_wait_rounds_count} of {self.iteration_wait_rounds} rounds to place a bet')
             except Exception as e:
                 print(f'Error during execution: {e}')
