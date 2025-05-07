@@ -100,10 +100,8 @@ class Executor(BaseModel):
                         for multiplier in list(reversed(self.casino.get_latest_multipliers()[:index_of_previous_multiplier_in_latest_multipliers])):
                             if multiplier >= decided_multiplier.multiplier_for_box_one:
                                 result_one = RoundResult.MISS
-                                decided_multiplier.multiplier_for_box_one = 1.00
                             if multiplier >= decided_multiplier.multiplier_for_box_two:
                                 result_two = RoundResult.MISS
-                                decided_multiplier.multiplier_for_box_two = 1.00
                             if multiplier != latest_multiplier:
                                 self.live_bet_history.append(lvb := LiveBetHistory(
                                     date=date,
@@ -121,6 +119,10 @@ class Executor(BaseModel):
                                     decided_multiplier_two_category='B' if 1.00 <= decided_multiplier.multiplier_for_box_two <= 1.99 else 'P' if 2.00 <= decided_multiplier.multiplier_for_box_two <= 9.99 else 'Pk',
                                 ))
                                 logging.info(lvb)
+                            if multiplier >= decided_multiplier.multiplier_for_box_one:
+                                decided_multiplier.multiplier_for_box_one = 1.00
+                            if multiplier >= decided_multiplier.multiplier_for_box_two:
+                                decided_multiplier.multiplier_for_box_two = 1.00
 
                     self.casino.previous_multiplier_history = self.casino.get_latest_multipliers()
                     current_balance = self.casino.get_balance()
@@ -271,7 +273,7 @@ class Executor(BaseModel):
     def calculate_latency(self, multiplier: float) -> float:
         if multiplier <= 1.0:
             return 0.0
-        return round(0.05 + (multiplier - 1.0) * 0.05, 2)
+        return round(0.1 + (multiplier - 1.0) * 0.1, 2)
 
     def adjust_for_latency(self, multiplier: float) -> float:
         latency = self.calculate_latency(multiplier)
