@@ -1,23 +1,31 @@
 
 echo '===========================Updating os and installing dependencies================================'
-sudo apt update
-sudo apt install -y python3-pip
-sudo apt install -y libxi6
-sudo apt install -y libgconf-2-4
-sudo apt install -y libnss3
-sudo apt install -y libxss1
-sudo apt install -y libappindicator1
-sudo apt install -y fonts-liberation
-sudo apt install -y libatk-bridge2.0-0
-sudo apt install -y libgtk-3-0
-sudo apt install -y xvfb
-sudo apt install -y unzip
+# sudo apt update
+# sudo apt install -y python3-pip
+# sudo apt install -y libxi6
+# sudo apt install -y libgconf-2-4
+# sudo apt install -y libnss3
+# sudo apt install -y libxss1
+# sudo apt install -y libappindicator1
+# sudo apt install -y fonts-liberation
+# sudo apt install -y libatk-bridge2.0-0
+# sudo apt install -y libgtk-3-0
+# sudo apt install -y xvfb
+sudo yum update -y
+sudo yum install -y xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-drv-dummy
+sudo yum install -y unzip
+sudo yum install -y xorg-x11-drv-dummy
+sudo mkdir -p /etc/X11/xorg.conf.d
+sudo cp 10-dummy.conf /etc/X11/xorg.conf.d/
+sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER \
+  -logfile /tmp/xorg.log -config /etc/X11/xorg.conf.d/10-dummy.conf :99 &
+export DISPLAY=:99
 sudo curl -LsSf https://astral.sh/uv/install.sh | sh
 echo '=========================Update completed================================'
 
 echo '===========================Installing Chrome================================'
-sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.deb
-sudo apt install ./google-chrome-stable_current_x86_64.deb
+sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+sudo yum install ./google-chrome-stable_current_x86_64.rpm
 echo '=========================Chrome installation completed================================'
 
 echo '===========================Installing ChromeDriver================================'
@@ -34,5 +42,5 @@ echo '=========================Project dependencies installation completed======
 
 echo '===========================Running script================================'
 mkdir -p logs/live/
-xvfb-run -a uv run loss_lurker.py test
+uv run loss_lurker.py test
 echo '=========================Script execution completed================================'
