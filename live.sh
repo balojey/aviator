@@ -15,6 +15,7 @@ sudo yum update -y
 sudo yum install -y xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-drv-dummy
 sudo yum install -y unzip
 sudo yum install -y xorg-x11-drv-dummy
+sudo yum install -y wget
 sudo mkdir -p /etc/X11/xorg.conf.d
 sudo cp 10-dummy.conf /etc/X11/xorg.conf.d/
 sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER \
@@ -25,7 +26,7 @@ echo '=========================Update completed================================'
 
 echo '===========================Installing Chrome================================'
 sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-sudo yum install ./google-chrome-stable_current_x86_64.rpm
+sudo yum install -y ./google-chrome-stable_current_x86_64.rpm
 echo '=========================Chrome installation completed================================'
 
 echo '===========================Installing ChromeDriver================================'
