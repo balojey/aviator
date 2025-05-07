@@ -43,5 +43,5 @@ echo '=========================Project dependencies installation completed======
 
 echo '===========================Running script================================'
 mkdir -p logs/live/
-uv run loss_lurkey.py test
+uv run loss_lurker.py test
 echo '=========================Script execution completed================================'
