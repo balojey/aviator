@@ -11,6 +11,7 @@ echo '===========================Updating os and installing dependencies========
 # sudo apt install -y libatk-bridge2.0-0
 # sudo apt install -y libgtk-3-0
 # sudo apt install -y xvfb
+sudo timedatectl set-timezone Africa/Lagos
 sudo yum update -y
 sudo yum install -y xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-drv-dummy
 sudo yum install -y unzip
