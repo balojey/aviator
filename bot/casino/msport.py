@@ -61,6 +61,7 @@ class MSport(Casino):
         """
         Launch the Aviator game.
         """
+        self.driver.save_screenshot('screenshot.png')
         self.driver.find_elements(By.CLASS_NAME, 'nav-item')[4].click()
         sleep(15)
         for _ in range(10):
