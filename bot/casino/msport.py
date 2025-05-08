@@ -57,7 +57,7 @@ class MSport(Casino):
         password.send_keys(self.password)
         login = self.driver.find_element(By.CLASS_NAME, "login")
         login.click()
-        sleep(15)
+        sleep(60)
 
     def launch_aviator(self) -> None:
         """
