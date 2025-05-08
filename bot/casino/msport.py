@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium_stealth import stealth
+import pyautogui as pag
 
 from bot.casino.casino import Casino
 from bot.data_source import RoundResult
@@ -30,26 +31,13 @@ class MSport(Casino):
         chrome_options.add_argument('--disable-software-rasterizer')
         chrome_options.add_argument('--disable-dev-shm-usage')
         chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-background-networking')
-        chrome_options.add_argument('--disable-background-timer-throttling')
-        chrome_options.add_argument('--disable-client-side-phishing-detection')
-        chrome_options.add_argument('--disable-default-apps')
-        chrome_options.add_argument('--disable-hang-monitor')
-        chrome_options.add_argument('--disable-popup-blocking')
-        chrome_options.add_argument('--disable-prompt-on-repost')
-        chrome_options.add_argument('--disable-sync')
-        chrome_options.add_argument('--metrics-recording-only')
-        chrome_options.add_argument('--no-first-run')
-        chrome_options.add_argument('--safebrowsing-disable-auto-update')
-        chrome_options.add_argument('--enable-automation')
-        chrome_options.add_argument('--password-store=basic')
-        chrome_options.add_argument('--use-mock-keychain')
-        chrome_options.add_argument("--disable-blink-features=AutomationControlled")
-        chrome_options.add_argument(f"--proxy-server=http://{os.getenv('PROXY')}")
+        chrome_options.add_extension('./chrome-build1.13.0-prod.zip')
+
         self.driver = webdriver.Chrome(
             service=webdriver.ChromeService(executable_path=os.getenv("CHROME_DRIVER_PATH")),
             options=chrome_options,
         )
+
         stealth(self.driver,
             languages=["en-US", "en"],
             vendor="Google Inc.",
@@ -58,8 +46,11 @@ class MSport(Casino):
             renderer="Intel Iris OpenGL Engine",
             fix_hairline=True,
         )
+
         self.driver.set_window_size(1920, 1080)
         self.driver.get(self.url)
+        self.initialize_capmonster()
+        self.driver.refresh()
         phone = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[0]
         phone.send_keys(self.phone)
         password = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[1]
@@ -86,6 +77,32 @@ class MSport(Casino):
         WebDriverWait(self.driver, 30).until(
             EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
         )
+
+    def initialize_capmonster(self) -> None:
+        """
+        Initialize CapMonster
+        """
+        # while True:
+        #     print(pag.position())
+        pag.moveTo(1488, 98)
+        sleep(3)
+        pag.click()
+        pag.moveTo(1320, 272)
+        sleep(3)
+        pag.click()
+        pag.moveTo(1088, 253)
+        sleep(3)
+        pag.click()
+        pag.write(os.getenv('CAPMONSTER_API_KEY'))
+        sleep(3)
+        pag.moveTo(1418, 253)
+        sleep(3)
+        pag.click()
+        sleep(3)
+        pag.moveTo(700, 144)
+        sleep(3)
+        pag.click()
+        sleep(10)
 
 
 if __name__ == '__main__':

@@ -17,6 +17,7 @@ sudo yum install -y xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-drv-dummy
 sudo yum install -y unzip
 sudo yum install -y xorg-x11-drv-dummy
 sudo yum install -y wget
+sudo yum install -y xhost
 sudo mkdir -p /etc/X11/xorg.conf.d
 sudo cp 10-dummy.conf /etc/X11/xorg.conf.d/
 sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER \
@@ -44,5 +45,6 @@ echo '=========================Project dependencies installation completed======
 
 echo '===========================Running script================================'
 mkdir -p logs/live/
+xhost +SI:localuser:$(whoami)
 uv run eagle_shot.py live
 echo '=========================Script execution completed================================'
