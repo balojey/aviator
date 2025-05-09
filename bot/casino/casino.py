@@ -203,6 +203,7 @@ class Casino(BaseModel):
         Refresh the page.
         """
         try:
+            self.driver.save_screenshot('error.png')
             self.driver.refresh()
             WebDriverWait(self.driver, 25).until(
                 EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
@@ -211,5 +212,6 @@ class Casino(BaseModel):
                 latest_multiplier = self.driver.find_elements(By.CLASS_NAME, 'payout')[-1].text.strip()[:-1].replace(',', '')
             except Exception as e:
                 self.refresh()
+            self.driver.save_screenshot('error_resolved.png')
         except Exception as e:
             print(f"Error refreshing page: {e}")
