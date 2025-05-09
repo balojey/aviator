@@ -28,6 +28,11 @@ class MSport(Casino):
 
     def login(self) -> None:
         chrome_options = webdriver.ChromeOptions()
+        chrome_service = webdriver.ChromeService(
+            executable_path=os.getenv("CHROME_DRIVER_PATH"),
+            log_output='chrome_driver_logs.log',
+            service_args=['--verbose'],
+        )
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument('--disable-software-rasterizer')
         chrome_options.add_argument('--disable-dev-shm-usage')
@@ -35,7 +40,7 @@ class MSport(Casino):
         chrome_options.add_extension('./chrome-build1.13.0-prod.zip')
 
         self.driver = webdriver.Chrome(
-            service=webdriver.ChromeService(executable_path=os.getenv("CHROME_DRIVER_PATH")),
+            service=chrome_service,
             options=chrome_options,
         )
 
