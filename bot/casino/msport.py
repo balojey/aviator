@@ -57,13 +57,13 @@ class MSport(Casino):
         password.send_keys(self.password)
         login = self.driver.find_element(By.CLASS_NAME, "login")
         login.click()
-        sleep(60)
+        sleep(100)
+        self.driver.save_screenshot('six.png')
 
     def launch_aviator(self) -> None:
         """
         Launch the Aviator game.
         """
-        self.driver.save_screenshot('six.png')
         self.driver.find_elements(By.CLASS_NAME, 'nav-item')[4].click()
         sleep(15)
         for _ in range(10):
