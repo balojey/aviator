@@ -50,15 +50,26 @@ class MSport(Casino):
 
         self.driver.set_window_size(1920, 1080)
         self.initialize_capmonster()
-        self.driver.get(self.url)
-        phone = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[0]
-        phone.send_keys(self.phone)
-        password = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[1]
-        password.send_keys(self.password)
-        login = self.driver.find_element(By.CLASS_NAME, "login")
-        login.click()
-        sleep(100)
-        self.driver.save_screenshot('six.png')
+        try:
+            self.driver.get(self.url)
+            phone = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[0]
+            phone.send_keys(self.phone)
+            password = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[1]
+            password.send_keys(self.password)
+            login = self.driver.find_element(By.CLASS_NAME, "login")
+            login.click()
+            sleep(100)
+            self.driver.save_screenshot('six.png')
+        except:
+            self.driver.refresh()
+            phone = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[0]
+            phone.send_keys(self.phone)
+            password = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[1]
+            password.send_keys(self.password)
+            login = self.driver.find_element(By.CLASS_NAME, "login")
+            login.click()
+            sleep(100)
+            self.driver.save_screenshot('six.png')
 
     def launch_aviator(self) -> None:
         """
