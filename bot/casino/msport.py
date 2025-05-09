@@ -8,7 +8,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium_stealth import stealth
-import pyautogui as pag
+from selenium.webdriver.remote.webelement import WebElement
+# import pyautogui as pag
 
 from bot.casino.casino import Casino
 from bot.data_source import RoundResult
@@ -48,9 +49,8 @@ class MSport(Casino):
         )
 
         self.driver.set_window_size(1920, 1080)
-        self.driver.get(self.url)
         self.initialize_capmonster()
-        self.driver.refresh()
+        self.driver.get(self.url)
         phone = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[0]
         phone.send_keys(self.phone)
         password = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[1]
@@ -82,28 +82,17 @@ class MSport(Casino):
         """
         Initialize CapMonster
         """
-        # while True:
-        #     print(pag.position())
-        pag.moveTo(1488, 98)
-        sleep(3)
-        pag.click()
-        pag.moveTo(1320, 272)
-        sleep(3)
-        pag.click()
-        pag.moveTo(1088, 253)
-        sleep(3)
-        pag.click()
-        pag.write(os.getenv('CAPMONSTER_API_KEY'))
-        sleep(3)
-        pag.moveTo(1418, 253)
-        sleep(3)
-        pag.click()
-        sleep(3)
-        pag.moveTo(1488, 98)
-        sleep(3)
-        pag.click()
-        sleep(10)
+        self.driver.get("chrome://extensions/")
+        extensions_manager = self.driver.find_element(By.TAG_NAME, "extensions-manager").shadow_root
+        extensions_item_list: WebElement = extensions_manager.find_element(By.CSS_SELECTOR, "extensions-item-list")
+        extensions_item: WebElement = extensions_item_list.shadow_root.find_element(By.CSS_SELECTOR, "extensions-item")
+        extension_id = extensions_item.get_attribute("id")
+        
+        self.driver.get(f'chrome-extension://{extension_id}/popup.html')
+        self.driver.find_element(By.ID, 'client-key-input').send_keys(os.getenv('CAPMONSTER_API_KEY'))
+        self.driver.find_element(By.ID, 'client-key-save-btn').click()
 
+        sleep(10)
 
 if __name__ == '__main__':
     pass
