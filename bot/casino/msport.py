@@ -49,26 +49,21 @@ class MSport(Casino):
 
         self.driver.set_window_size(1920, 1080)
         self.driver.get(self.url)
-        self.driver.save_screenshot('one.png')
         self.initialize_capmonster()
-        self.driver.save_screenshot('two.png')
         self.driver.refresh()
-        self.driver.save_screenshot('three.png')
         phone = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[0]
         phone.send_keys(self.phone)
         password = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[1]
         password.send_keys(self.password)
-        self.driver.save_screenshot('four.png')
         login = self.driver.find_element(By.CLASS_NAME, "login")
         login.click()
-        self.driver.save_screenshot('five.png')
         sleep(60)
 
     def launch_aviator(self) -> None:
         """
         Launch the Aviator game.
         """
-        self.driver.save_screenshot('six.png')
+        pag.screenshot('six.png')
         self.driver.find_elements(By.CLASS_NAME, 'nav-item')[4].click()
         sleep(15)
         for _ in range(10):

@@ -49,5 +49,5 @@ xhost +SI:localuser:$(whoami)
 sudo touch $HOME/.Xauthority
 xauth generate :99 . trusted
 
-uv run eagle_shot.py live
+# uv run eagle_shot.py live
 echo '=========================Script execution completed================================'
