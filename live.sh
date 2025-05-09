@@ -13,15 +13,16 @@ echo '===========================Updating os and installing dependencies========
 # sudo apt install -y xvfb
 sudo timedatectl set-timezone Africa/Lagos
 sudo yum update -y
-sudo yum install -y xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-drv-dummy
+# sudo yum install -y xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-drv-dummy
 sudo yum install -y unzip
-sudo yum install -y xorg-x11-drv-dummy
+# sudo yum install -y xorg-x11-drv-dummy
 sudo yum install -y wget
+sudo yum install -y xorg-x11-server-Xvfb
 # sudo yum install -y xhost
-sudo mkdir -p /etc/X11/xorg.conf.d
-sudo cp 10-dummy.conf /etc/X11/xorg.conf.d/
-sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER \
-  -logfile /tmp/xorg.log -config /etc/X11/xorg.conf.d/10-dummy.conf :99 &
+# sudo mkdir -p /etc/X11/xorg.conf.d
+# sudo cp 10-dummy.conf /etc/X11/xorg.conf.d/
+# sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER \
+#   -logfile /tmp/xorg.log -config /etc/X11/xorg.conf.d/10-dummy.conf :99 &
 sudo curl -LsSf https://astral.sh/uv/install.sh | sh
 echo '=========================Update completed================================'
 
@@ -47,7 +48,7 @@ mkdir -p logs/live/
 # xhost +SI:localuser:$(whoami)
 # touch $HOME/.Xauthority
 # xauth generate :99 . trusted
-export DISPLAY=:99
+# export DISPLAY=:99
 
-uv run eagle_shot.py live &
+xvfb-run -a uv run eagle_shot.py live &
 echo '=========================Script execution completed================================'
