@@ -22,7 +22,6 @@ sudo mkdir -p /etc/X11/xorg.conf.d
 sudo cp 10-dummy.conf /etc/X11/xorg.conf.d/
 sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER \
   -logfile /tmp/xorg.log -config /etc/X11/xorg.conf.d/10-dummy.conf :99 &
-export DISPLAY=:99
 sudo curl -LsSf https://astral.sh/uv/install.sh | sh
 echo '=========================Update completed================================'
 
@@ -48,6 +47,7 @@ mkdir -p logs/live/
 xhost +SI:localuser:$(whoami)
 touch $HOME/.Xauthority
 xauth generate :99 . trusted
+export DISPLAY=:99
 
 uv run eagle_shot.py live
 echo '=========================Script execution completed================================'
