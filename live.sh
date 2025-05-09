@@ -49,5 +49,5 @@ mkdir -p logs/live/
 # xauth generate :99 . trusted
 export DISPLAY=:99
 
-uv run eagle_shot.py live
+uv run eagle_shot.py live &
 echo '=========================Script execution completed================================'
