@@ -46,8 +46,8 @@ echo '=========================Project dependencies installation completed======
 echo '===========================Running script================================'
 mkdir -p logs/live/
 xhost +SI:localuser:$(whoami)
-sudo touch $HOME/.Xauthority
+touch $HOME/.Xauthority
 xauth generate :99 . trusted
 
-# uv run eagle_shot.py live
+uv run eagle_shot.py live
 echo '=========================Script execution completed================================'

@@ -99,7 +99,7 @@ class MSport(Casino):
         sleep(3)
         pag.click()
         sleep(3)
-        pag.moveTo(700, 144)
+        pag.moveTo(1488, 98)
         sleep(3)
         pag.click()
         sleep(10)
