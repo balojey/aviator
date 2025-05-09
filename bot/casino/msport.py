@@ -59,9 +59,10 @@ class MSport(Casino):
             login = self.driver.find_element(By.CLASS_NAME, "login")
             login.click()
             sleep(100)
-            self.driver.save_screenshot('six.png')
+            self.driver.save_screenshot('one.png')
         except:
             self.driver.refresh()
+            self.driver.save_screenshot('two.png')
             phone = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[0]
             phone.send_keys(self.phone)
             password = self.driver.find_element(By.CLASS_NAME, 'm-quickLogin-comp').find_elements(By.TAG_NAME, 'input')[1]
@@ -69,7 +70,7 @@ class MSport(Casino):
             login = self.driver.find_element(By.CLASS_NAME, "login")
             login.click()
             sleep(100)
-            self.driver.save_screenshot('six.png')
+            self.driver.save_screenshot('three.png')
 
     def launch_aviator(self) -> None:
         """
