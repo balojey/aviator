@@ -37,12 +37,15 @@ RUN CHROME_VERSION=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 
 # Install uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# Add uv to PATH
+ENV PATH="/root/.local/bin:$PATH"
+
 # Copy project files
 WORKDIR /app
 COPY . .
 
 # Install Python dependencies
-RUN /root/.cargo/bin/uv sync
+RUN uv sync
 
 # Create log directory
 RUN mkdir -p logs/live/
