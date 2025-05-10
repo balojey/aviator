@@ -17,7 +17,7 @@ sudo yum update -y
 sudo yum install -y unzip
 # sudo yum install -y xorg-x11-drv-dummy
 sudo yum install -y wget
-sudo yum install -y xorg-x11-server-Xvfb
+# sudo yum install -y xorg-x11-server-Xvfb
 # sudo yum install -y xhost
 # sudo mkdir -p /etc/X11/xorg.conf.d
 # sudo cp 10-dummy.conf /etc/X11/xorg.conf.d/
@@ -48,7 +48,7 @@ mkdir -p logs/live/
 # xhost +SI:localuser:$(whoami)
 # touch $HOME/.Xauthority
 # xauth generate :99 . trusted
-# export DISPLAY=:99
+export DISPLAY=:1
 
-xvfb-run -a uv run eagle_shot.py live &
+uv run eagle_shot.py live &
 echo '=========================Script execution completed================================'
