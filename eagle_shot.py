@@ -75,8 +75,6 @@ class EagleShot(BettingStrategy):
                         target = round(target + increment, 2)  # Increase target by +100%
                 if not resolved:
                     targets.append(target)
-                    if len(targets) == 1:
-                        self.start_index = self.start_index + i
             
             i += 1
 
@@ -87,7 +85,7 @@ class EagleShot(BettingStrategy):
         return sorted(filtered_multipliers)
 
     def decide_multiplier(self, game_data: pl.DataFrame, bet_history: list[BetHistory | LiveBetHistory] = [], restart_strategy: bool = False) -> DecidedMultiplier:
-        multipliers = [history.multiplier for history in bet_history[self.start_index:]]
+        multipliers = [history.multiplier for history in bet_history]
         target_multipliers = self.scanner(multipliers, self.initial_target_multiplier, self.lower_bound, self.upper_bound, self.increment)
         if len(target_multipliers) > 0:
             sorted_multipliers = self.sort(target_multipliers, self.minimum_multiplier)
