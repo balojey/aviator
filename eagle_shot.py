@@ -76,7 +76,7 @@ class EagleShot(BettingStrategy):
                 if not resolved:
                     targets.append(target)
                     if len(targets) == 1:
-                        self.start_index = i
+                        self.start_index = self.start_index + i
             
             i += 1
 
