@@ -157,7 +157,7 @@ if __name__ == '__main__':
             risk_manager=risk_manager,
             data_source=data_source,
             start_date='2025-03-28',
-            initial_balance=23450,
+            initial_balance=23461.39,
             iteration_wait_rounds=10,
             # continuous=False,
             # consistent=False,
