@@ -84,22 +84,31 @@ class EagleShot(BettingStrategy):
         return sorted(filtered_multipliers)
 
     def decide_multiplier(self, game_data: pl.DataFrame, bet_history: list[BetHistory | LiveBetHistory] = [], restart_strategy: bool = False) -> DecidedMultiplier:
+        losses = len([history for history in bet_history[:50] if history.result_one == RoundResult.LOSS])
         multipliers = [history.multiplier for history in bet_history]
         target_multipliers = self.scanner(multipliers, self.initial_target_multiplier, self.lower_bound, self.upper_bound, self.increment)
         if len(target_multipliers) > 0:
             sorted_multipliers = self.sort(target_multipliers, self.minimum_multiplier)
             self.log.info(f'Sorted Target Multipliers: {sorted_multipliers}')
+            decided_multiplier = DecidedMultiplier(
+                multiplier_for_box_one=1.00,
+                multiplier_for_box_two=1.00,
+            )
             if len(sorted_multipliers) > 0:
-                decided_multiplier = DecidedMultiplier(
-                    multiplier_for_box_one=1.00,
-                    multiplier_for_box_two=1.00,
-                )
                 if len(sorted_multipliers) == 1:
                     decided_multiplier.multiplier_for_box_one = sorted_multipliers[0]
                 elif len(sorted_multipliers) > 1:
                     decided_multiplier.multiplier_for_box_one = sorted_multipliers[0]
                     decided_multiplier.multiplier_for_box_two = sorted_multipliers[1]
+                    if max(sorted_multipliers) >= 300:
+                        decided_multiplier.multiplier_for_box_one = sorted_multipliers[-1]
+                        decided_multiplier.multiplier_for_box_two = sorted_multipliers[-2]
                 return decided_multiplier
+            else:
+                # multiplier = max(target_multipliers)
+                # decided_multiplier.multiplier_for_box_one = 5.0
+                # return decided_multiplier
+                pass
 
         return self.base_decided_multiplier
     
@@ -147,8 +156,8 @@ if __name__ == '__main__':
             strategy=strategy,
             risk_manager=risk_manager,
             data_source=data_source,
-            start_date='2025-03-24',
-            initial_balance=20000,
+            start_date='2025-03-28',
+            initial_balance=23450,
             iteration_wait_rounds=10,
             # continuous=False,
             # consistent=False,
@@ -167,6 +176,7 @@ if __name__ == '__main__':
             # live_bet_history_file='live_bet_history/live_bet_history_20250420_075532.json', # 2025-04-20 Sporty Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250425_103848.json', # 2025-04-25 MSport Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250430_233702.json', # 2025-04-30 MSport Real
+            live_bet_history_file='live_bet_history/live_bet_history_20250511_020609.json', # 2025-05-11 MSport Real
             # live_bet_history_file='artificial_live_bet_history/live_bet_history.json'
         )
         backester.run()

@@ -1,28 +1,9 @@
 
 echo '===========================Updating os and installing dependencies================================'
-# sudo apt update
-# sudo apt install -y python3-pip
-# sudo apt install -y libxi6
-# sudo apt install -y libgconf-2-4
-# sudo apt install -y libnss3
-# sudo apt install -y libxss1
-# sudo apt install -y libappindicator1
-# sudo apt install -y fonts-liberation
-# sudo apt install -y libatk-bridge2.0-0
-# sudo apt install -y libgtk-3-0
-# sudo apt install -y xvfb
 sudo timedatectl set-timezone Africa/Lagos
 sudo yum update -y
-# sudo yum install -y xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-drv-dummy
 sudo yum install -y unzip
-# sudo yum install -y xorg-x11-drv-dummy
 sudo yum install -y wget
-# sudo yum install -y xorg-x11-server-Xvfb
-# sudo yum install -y xhost
-# sudo mkdir -p /etc/X11/xorg.conf.d
-# sudo cp 10-dummy.conf /etc/X11/xorg.conf.d/
-# sudo Xorg -noreset +extension GLX +extension RANDR +extension RENDER \
-#   -logfile /tmp/xorg.log -config /etc/X11/xorg.conf.d/10-dummy.conf :99 &
 sudo curl -LsSf https://astral.sh/uv/install.sh | sh
 echo '=========================Update completed================================'
 

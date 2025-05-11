@@ -130,6 +130,7 @@ if __name__ == '__main__':
             # live_bet_history_file='live_bet_history/live_bet_history_20250420_075532.json', # 2025-04-20 Sporty Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250425_103848.json', # 2025-04-25 MSport Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250430_233702.json', # 2025-04-30 MSport Real
+            live_bet_history_file='live_bet_history/live_bet_history_20250511_020609.json', # 2025-05-11 MSport Real
             # live_bet_history_file='artificial_live_bet_history/live_bet_history.json'
         )
         backester.run()
