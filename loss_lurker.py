@@ -76,7 +76,7 @@ class LossLurker(BettingStrategy):
     
 
 strategy = LossLurker(percentage_to_bet_per_round_for_box_one=0.0005, percentage_to_bet_per_round_for_box_two=0.00075)
-risk_manager = RiskManager(stop_loss=1.0, take_profit=0.05)
+risk_manager = RiskManager(stop_loss=1.0, take_profit=0.00005)
 data_source = DataSource(csv_file="sporty_aviator_data.csv")
 test_casino = Spribe()
 live_casino = MSport()
@@ -89,7 +89,7 @@ if __name__ == '__main__':
             risk_manager=risk_manager,
             data_source=data_source,
             casino=live_casino,
-            iteration_wait_rounds=10,
+            iteration_wait_rounds=2,
             # continuous=False,
             # consistent=False,
         )
@@ -100,7 +100,7 @@ if __name__ == '__main__':
             risk_manager=risk_manager,
             data_source=data_source,
             casino=test_casino,
-            iteration_wait_rounds=10,
+            iteration_wait_rounds=2,
             # continuous=False,
             # consistent=False,
         )

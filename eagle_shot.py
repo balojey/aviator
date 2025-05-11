@@ -21,6 +21,7 @@ class EagleShot(BettingStrategy):
         multiplier_for_box_one=1.00,
         multiplier_for_box_two=1.00,
     )
+    start_index: int = 0
 
     def introduce_strategy(self):
         self.log.info(f"""
@@ -74,6 +75,8 @@ class EagleShot(BettingStrategy):
                         target = round(target + increment, 2)  # Increase target by +100%
                 if not resolved:
                     targets.append(target)
+                    if len(targets) == 1:
+                        self.start_index = i
             
             i += 1
 
@@ -84,8 +87,7 @@ class EagleShot(BettingStrategy):
         return sorted(filtered_multipliers)
 
     def decide_multiplier(self, game_data: pl.DataFrame, bet_history: list[BetHistory | LiveBetHistory] = [], restart_strategy: bool = False) -> DecidedMultiplier:
-        losses = len([history for history in bet_history[:50] if history.result_one == RoundResult.LOSS])
-        multipliers = [history.multiplier for history in bet_history]
+        multipliers = [history.multiplier for history in bet_history[self.start_index:]]
         target_multipliers = self.scanner(multipliers, self.initial_target_multiplier, self.lower_bound, self.upper_bound, self.increment)
         if len(target_multipliers) > 0:
             sorted_multipliers = self.sort(target_multipliers, self.minimum_multiplier)
@@ -176,7 +178,8 @@ if __name__ == '__main__':
             # live_bet_history_file='live_bet_history/live_bet_history_20250420_075532.json', # 2025-04-20 Sporty Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250425_103848.json', # 2025-04-25 MSport Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250430_233702.json', # 2025-04-30 MSport Real
-            live_bet_history_file='live_bet_history/live_bet_history_20250511_020609.json', # 2025-05-11 MSport Real
+            # live_bet_history_file='live_bet_history/live_bet_history_20250511_020609.json', # 2025-05-11 MSport Real
+            live_bet_history_file='live_bet_history/live_bet_history_20250511_113914.json', # 2025-05-11 MSport Real
             # live_bet_history_file='artificial_live_bet_history/live_bet_history.json'
         )
         backester.run()

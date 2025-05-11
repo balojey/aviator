@@ -71,6 +71,8 @@ class Executor(BaseModel):
         result_two = RoundResult.DRAW
         while True:
             try:
+                if restart_strategy and iteration_wait_rounds_count <= 0:
+                    self.casino.refresh()
                 if iteration_wait_rounds_count != 0:
                     decided_multiplier = DecidedMultiplier(multiplier_for_box_one=1.0, multiplier_for_box_two=1.0)
                     result_one = RoundResult.DRAW
