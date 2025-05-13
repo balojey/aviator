@@ -7,12 +7,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium_stealth import stealth
 
-from bot.casino.casino import Casino
+from bot.casino.msport import MSport
 from bot.data_source import RoundResult
 
 
-class Sporty(Casino):
+class Sporty(MSport):
     """
     Interface for interacting with Sporty Casino.
     """
@@ -24,11 +25,34 @@ class Sporty(Casino):
         self.password = os.getenv("PASSWORD")
 
     def login(self) -> None:
-        self.driver = webdriver.Chrome(
-            service=webdriver.ChromeService(executable_path=os.getenv("CHROME_DRIVER_PATH")),
-            options=webdriver.ChromeOptions()
+        chrome_options = webdriver.ChromeOptions()
+        chrome_service = webdriver.ChromeService(
+            executable_path=os.getenv("CHROME_DRIVER_PATH"),
+            log_output='chrome_driver_logs.log',
+            service_args=['--verbose'],
         )
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--disable-software-rasterizer')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_extension('./chrome-build1.13.0-prod.zip')
+
+        self.driver = webdriver.Chrome(
+            service=chrome_service,
+            options=chrome_options,
+        )
+
+        stealth(self.driver,
+            languages=["en-US", "en"],
+            vendor="Google Inc.",
+            platform="Win32",
+            webgl_vendor="Intel Inc.",
+            renderer="Intel Iris OpenGL Engine",
+            fix_hairline=True,
+        )
+
         self.driver.set_window_size(1920, 1080)
+        # self.initialize_capmonster()
         self.driver.get(self.url)
         phone = self.driver.find_element(By.NAME, "phone")
         phone.send_keys(self.phone)
@@ -36,6 +60,8 @@ class Sporty(Casino):
         password.send_keys(self.password)
         login = self.driver.find_element(By.NAME, "logIn")
         login.click()
+        sleep(15)
+        self.driver.refresh()
         sleep(15)
 
     def launch_aviator(self) -> None:
@@ -45,16 +71,39 @@ class Sporty(Casino):
         iframe = self.driver.find_element(By.ID, "games-lobby")
         self.driver.switch_to.frame(iframe)
         self.driver.find_element(By.ID, 'game_item19').find_element(By.TAG_NAME, 'img').click()
-        sleep(30)
-        self.driver.refresh()
-        sleep(15)
-        iframe = self.driver.find_element(By.ID, "games-lobby")
-        self.driver.switch_to.frame(iframe)
+        sleep(5)
         iframe = self.driver.find_element(By.CLASS_NAME, "turbo-games-iframe")
         self.driver.switch_to.frame(iframe)
         WebDriverWait(self.driver, 30).until(
             EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
         )
+
+    def refresh(self):
+        """
+        Refresh the page.
+        """
+        try:
+            self.driver.save_screenshot('error.png')
+            self.driver.refresh()
+            iframe = self.driver.find_element(By.ID, "games-lobby")
+            self.driver.switch_to.frame(iframe)
+            WebDriverWait(self.driver, 25).until(
+                EC.visibility_of_element_located((By.ID, 'game_item19'))
+            )
+            self.driver.find_element(By.ID, 'game_item19').find_element(By.TAG_NAME, 'img').click()
+            sleep(5)
+            iframe = self.driver.find_element(By.CLASS_NAME, "turbo-games-iframe")
+            self.driver.switch_to.frame(iframe)
+            WebDriverWait(self.driver, 25).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'payout'))
+            )
+            try:
+                latest_multiplier = self.driver.find_elements(By.CLASS_NAME, 'payout')[-1].text.strip()[:-1].replace(',', '')
+            except Exception as e:
+                self.refresh()
+            self.driver.save_screenshot('error_resolved.png')
+        except Exception as e:
+            print(f"Error refreshing page: {e}")
 
 
 if __name__ == '__main__':
