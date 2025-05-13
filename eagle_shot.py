@@ -114,8 +114,8 @@ class EagleShot(BettingStrategy):
     
 
 strategy = EagleShot(
-    percentage_to_bet_per_round_for_box_one=0.0005,
-    percentage_to_bet_per_round_for_box_two=0.0005,
+    percentage_to_bet_per_round_for_box_one=0.000333,
+    percentage_to_bet_per_round_for_box_two=0.000333,
     minimum_multiplier=10.00,
     initial_target_multiplier=2.00,
     lower_bound=1.00,
@@ -157,7 +157,7 @@ if __name__ == '__main__':
             risk_manager=risk_manager,
             data_source=data_source,
             start_date='2025-03-28',
-            initial_balance=23461.39,
+            initial_balance=29004.8,
             iteration_wait_rounds=10,
             # continuous=False,
             # consistent=False,
@@ -177,7 +177,9 @@ if __name__ == '__main__':
             # live_bet_history_file='live_bet_history/live_bet_history_20250425_103848.json', # 2025-04-25 MSport Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250430_233702.json', # 2025-04-30 MSport Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250511_020609.json', # 2025-05-11 MSport Real
-            live_bet_history_file='live_bet_history/live_bet_history_20250511_113914.json', # 2025-05-11 MSport Real
+            # live_bet_history_file='live_bet_history/live_bet_history_20250511_113914.json', # 2025-05-11 MSport Real
+            # live_bet_history_file='live_bet_history/live_bet_history_20250511_212240.json', # 2025-05-12 MSport Real
+            live_bet_history_file='live_bet_history/live_bet_history_20250512_095606.json', # 2025-05-13 MSport Real
             # live_bet_history_file='artificial_live_bet_history/live_bet_history.json'
         )
         backester.run()

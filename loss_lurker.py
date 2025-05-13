@@ -51,7 +51,7 @@ class LossLurker(BettingStrategy):
             self.base_decided_multiplier.multiplier_for_box_one += 1
 
             lost_rounds = [history for history in bet_history[-50:] if history.result_one == RoundResult.LOSS]
-            if bet_history[-1].multiplier < 2.00 and self.base_decided_multiplier.multiplier_for_box_two == 1.00 and len(lost_rounds) == 50:
+            if bet_history[-1].multiplier < 2.00 and self.base_decided_multiplier.multiplier_for_box_two == 1.00:
                 self.base_decided_multiplier.multiplier_for_box_two += 1.00
             if bet_history[-1].result_two == RoundResult.LOSS:
                 self.base_decided_multiplier.multiplier_for_box_two += 1.00
@@ -76,7 +76,7 @@ class LossLurker(BettingStrategy):
     
 
 strategy = LossLurker(percentage_to_bet_per_round_for_box_one=0.0005, percentage_to_bet_per_round_for_box_two=0.00075)
-risk_manager = RiskManager(stop_loss=1.0, take_profit=0.00005)
+risk_manager = RiskManager(stop_loss=1.0, take_profit=0.05)
 data_source = DataSource(csv_file="sporty_aviator_data.csv")
 test_casino = Spribe()
 live_casino = MSport()
@@ -110,8 +110,8 @@ if __name__ == '__main__':
             strategy=strategy,
             risk_manager=risk_manager,
             data_source=data_source,
-            start_date='2025-03-23',
-            initial_balance=20000,
+            start_date='2025-03-28',
+            initial_balance=29004.8,
             iteration_wait_rounds=10,
             # continuous=False,
             # consistent=False,
@@ -130,7 +130,10 @@ if __name__ == '__main__':
             # live_bet_history_file='live_bet_history/live_bet_history_20250420_075532.json', # 2025-04-20 Sporty Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250425_103848.json', # 2025-04-25 MSport Real
             # live_bet_history_file='live_bet_history/live_bet_history_20250430_233702.json', # 2025-04-30 MSport Real
-            live_bet_history_file='live_bet_history/live_bet_history_20250511_020609.json', # 2025-05-11 MSport Real
+            # live_bet_history_file='live_bet_history/live_bet_history_20250511_020609.json', # 2025-05-11 MSport Real
+            # live_bet_history_file='live_bet_history/live_bet_history_20250511_113914.json', # 2025-05-11 MSport Real
+            # live_bet_history_file='live_bet_history/live_bet_history_20250511_212240.json', # 2025-05-12 MSport Real
+            # live_bet_history_file='live_bet_history/live_bet_history_20250512_095606.json', # 2025-05-13 MSport Real
             # live_bet_history_file='artificial_live_bet_history/live_bet_history.json'
         )
         backester.run()
