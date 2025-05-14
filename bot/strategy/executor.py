@@ -275,7 +275,7 @@ class Executor(BaseModel):
     def calculate_latency(self, multiplier: float) -> float:
         if multiplier <= 1.0:
             return 0.0
-        return round(0.1 + (multiplier - 1.0) * 0.1, 2)
+        return round(0.02 + (multiplier - 1.0) * 0.02, 2)
 
     def adjust_for_latency(self, multiplier: float) -> float:
         latency = self.calculate_latency(multiplier)

@@ -114,15 +114,15 @@ class EagleShot(BettingStrategy):
     
 
 strategy = EagleShot(
-    percentage_to_bet_per_round_for_box_one=0.0005,
-    percentage_to_bet_per_round_for_box_two=0.0005,
+    percentage_to_bet_per_round_for_box_one=0.000333,
+    percentage_to_bet_per_round_for_box_two=0.000333,
     minimum_multiplier=10.00,
     initial_target_multiplier=3.00,
     lower_bound=1.00,
     upper_bound=2.30,
     increment=1.00
 )
-risk_manager = RiskManager(stop_loss=1.0, take_profit=0.05)
+risk_manager = RiskManager(stop_loss=1.0, take_profit=0.3)
 data_source = DataSource(csv_file="sporty_aviator_data.csv")
 test_casino = Spribe()
 live_casino = Sporty()

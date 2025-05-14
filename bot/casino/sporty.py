@@ -52,7 +52,7 @@ class Sporty(MSport):
         )
 
         self.driver.set_window_size(1920, 1080)
-        # self.initialize_capmonster()
+        self.initialize_capmonster()
         self.driver.get(self.url)
         phone = self.driver.find_element(By.NAME, "phone")
         phone.send_keys(self.phone)
@@ -60,7 +60,7 @@ class Sporty(MSport):
         password.send_keys(self.password)
         login = self.driver.find_element(By.NAME, "logIn")
         login.click()
-        sleep(15)
+        sleep(45)
         self.driver.refresh()
         sleep(15)
 
